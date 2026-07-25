@@ -3,12 +3,11 @@ class BabylonRender extends EzAlpineHTMLElement {
     ALPINE_COMPONENT_KEY = 'initBabylonRenderComponent';
 
     ELEMENT_ATTRIBUTES = [
-        { 'class' : 'flex md:gap-8 flex-col md:flex-row w-full md:-my-[50px]' },
-        { '@resize.window' : 'checkIsMobile' }
+        { 'class' : 'flex md:gap-8 flex-col md:flex-row w-full md:-my-[50px]' }
     ]
 
     EZ_HTML = /*html*/`
-    <div class="flex items-center">
+    <div class="flex items-center" @resize.window="checkIsMobile">
         <div :style="{ width: babylonConfig.w + 'px', height: babylonConfig.h + 'px'}"
             style="position: relative;"
             :class="{ 

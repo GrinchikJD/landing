@@ -3,8 +3,7 @@ class Header extends EzAlpineHTMLElement {
     ALPINE_COMPONENT_KEY = 'initHeaderComponent';
 
     ELEMENT_ATTRIBUTES = [
-        { 'class' : 'flex items-center w-full justify-between' },
-        { '@hook-backdrop-disable.window' : 'isMobileOpened = false' }
+        { 'class' : 'flex items-center w-full justify-between' }
     ];
 
     drawMenuIconBySrcAndCondition(src, condition) {
@@ -21,6 +20,7 @@ class Header extends EzAlpineHTMLElement {
         text-xl md:text-base transition-all max-md:-translate-x-full duration-200"
         :class="{ 'max-md:translate-x-0 js-menu-opened' : isMobileOpened, 
                 'max-md:-translate-x-full' : !isMobileOpened }"
+        @hook-backdrop-disable.window="isMobileOpened = false"
     >
         <ul class="flex flex-col max-md:gap-4 md:flex-row md:items-center max-md:w-full
             max-md:py-4 max-md:absolute max-md:top-4"

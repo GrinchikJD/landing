@@ -41,9 +41,7 @@ class Skills extends EzAlpineHTMLElement {
     ];
 
     ELEMENT_ATTRIBUTES = [
-        { 'class' : 'flex items-center -mx-4 px-4 bg-theme-50 shadow-lg' },
-        { '@mouseenter': 'handleHover()' },
-        { '@mouseleave.self': 'handleRelease()' }
+        { 'class' : 'flex items-center -mx-4 px-4 bg-theme-50 shadow-lg' }
     ];
 
     SLIDER_BUTTON_CLASS = `rounded-full aspect-suqare w-6 min-w-6 bg-white text-theme flex items-center justify-center
@@ -73,7 +71,8 @@ class Skills extends EzAlpineHTMLElement {
     }
 
     EZ_HTML = ({autorotation, waittime}) => /*html*/`
-    <div @resize.window.debounce.150ms="recalculate"
+    <div @mouseenter="handleHover()" @mouseleave.self="handleRelease()"
+        @resize.window.debounce.150ms="recalculate"
         x-bind:injectdata="(autoRotation = ${autorotation}) 
             && (waitTime = ${waittime})"
         class="text-white w-full max-w-full flex items-center gap-8 md:gap-12 my-auto">
