@@ -16,7 +16,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # 1. Deployment
   deploy:
     environment:
       name: github-pages
@@ -28,13 +27,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies and build Tailwind
+        working-directory: ./src/styles/tailwind
+        run: |
+          npm install
+          npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with: 
-          # Current project folder
+        with:
           path: "."
 
       - name: Deploy to GitHub Pages
